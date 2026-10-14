@@ -1,0 +1,17 @@
+{
+  "languages": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "ru": "Русский",
+    "zh": "中文",
+    "ja": "日本語",
+    "ko": "한국어 (남)",
+    "kp": "조선어 (북)",
+    "vi": "Tiếng Việt",
+    "pt": "Português",
+    "tlh": "tlhIngan Hol (Klingon)",
+    "sjn": "Sindarin (Elvish)",
+    "pars": "Parseltongue"
+  }
+}

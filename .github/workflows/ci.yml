@@ -1,0 +1,41 @@
+name: Build and privacy checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build
+        run: dotnet build EXIFexit.sln -c Release
+      - name: Tests
+        run: dotnet test EXIFexit.sln -c Release --no-build
+      - name: Check tracked paths
+        shell: pwsh
+        run: ./scripts/check-repository.ps1 -PathsOnly
+      - name: Build portable app
+        shell: pwsh
+        run: ./scripts/publish.ps1
+      - name: Validate legacy Python syntax
+        shell: pwsh
+        run: python -m compileall -q legacy/python
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Scan full history with Gitleaks
+        run: |
+          docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:v8.30.1 git /repo --redact --no-banner

@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>EXIFexit</AssemblyName>
+    <RootNamespace>EXIFexit.App</RootNamespace>
+    <ApplicationIcon></ApplicationIcon>
+    <Version>2.0.0</Version>
+    <Product>EXIFexit</Product>
+    <Company>EXIFexit</Company>
+    <Description>Privacy-grade EXIF and PDF metadata shredder</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EXIFexit.Application\EXIFexit.Application.csproj" />
+    <ProjectReference Include="..\EXIFexit.Infrastructure\EXIFexit.Infrastructure.csproj" />
+    <ProjectReference Include="..\EXIFexit.Domain\EXIFexit.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
+  </ItemGroup>
+
+  <!-- Ship mask + locale packs next to the executable -->
+  <ItemGroup>
+    <None Include="..\..\data\**\*.*">
+      <Link>data\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

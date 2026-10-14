@@ -1,0 +1,60 @@
+# Build output and development tools
+**/bin/
+**/obj/
+/artifacts/
+/TestResults/
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local documents and processed media (use synthetic fixtures in tests)
+/PDFs/
+/private/
+/samples/
+/output/
+*.pdf
+*.jpg
+*.jpeg
+*.jpe
+*.jfif
+*.png
+*.tif
+*.tiff
+*.webp
+*.bmp
+*.gif
+*.ico
+
+# Credentials, local settings, and signing material
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+id_rsa*
+id_ed25519*
+credentials*.json
+secrets*.json
+appsettings.*.local.json
+
+# Logs, temporary copies, and scanner reports
+*.log
+*.bak
+*.tmp
+gitleaks-report*
+.DS_Store
+Thumbs.db
+
+# Third-party license credentials
+sixlabors.lic
+*.lic
