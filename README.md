@@ -14,6 +14,12 @@ The current application is **EXIFexit 2.0**, built with .NET 8 and WPF. The earl
 
 ## Build and run
 
+### Download the portable app
+
+Download **EXIFexit-2.0.0-win-x64-portable.zip** from [GitHub Releases](https://github.com/RawPowered/EXIFexit/releases/latest), extract the entire ZIP, and open `EXIFexit.exe`. Keep its `data` and `licenses` folders beside it. No installer, Python, or separate .NET runtime is required. This Windows x64 build is unsigned; the dependency advisories below still apply.
+
+### Build from source
+
 Requires Windows and the **.NET 8 SDK or a compatible newer SDK**. The published Windows x64 application includes the .NET runtime; Python is only needed for the legacy application.
 
 ```powershell
@@ -28,6 +34,14 @@ Build a portable application:
 ```
 
 Keep the generated `data` directory beside the executable; it contains the translations and device masks. Build output is excluded from Git.
+
+To create the distributable ZIP with data, license notices, quick-start instructions, and a SHA-256 checksum:
+
+```powershell
+.\scripts\package-portable.ps1
+```
+
+The ZIP and `SHA256SUMS.txt` are written to `artifacts/releases`.
 
 ## Privacy and format limits
 

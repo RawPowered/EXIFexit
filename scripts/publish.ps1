@@ -1,7 +1,8 @@
 # Build a self-contained single-file EXIFexit.exe for Windows x64
+param([string]$OutputDirectory)
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
-$out = Join-Path $root "artifacts\EXIFexit"
+$out = if ($OutputDirectory) { [IO.Path]::GetFullPath($OutputDirectory) } else { Join-Path $root "artifacts\EXIFexit" }
 
 Write-Host "Publishing EXIFexit → $out" -ForegroundColor Cyan
 
@@ -23,5 +24,5 @@ if (Test-Path $exe) {
     $len = (Get-Item $exe).Length / 1MB
     Write-Host ("OK: {0} ({1:N1} MB)" -f $exe, $len) -ForegroundColor Green
 } else {
-    Write-Host "Publish finished but EXE not found." -ForegroundColor Yellow
+    throw "Publish finished but EXE not found."
 }

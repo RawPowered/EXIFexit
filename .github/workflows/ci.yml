@@ -23,9 +23,9 @@ jobs:
       - name: Check tracked paths
         shell: pwsh
         run: ./scripts/check-repository.ps1 -PathsOnly
-      - name: Build portable app
+      - name: Package portable app
         shell: pwsh
-        run: ./scripts/publish.ps1
+        run: ./scripts/package-portable.ps1
       - name: Validate legacy Python syntax
         shell: pwsh
         run: python -m compileall -q legacy/python
